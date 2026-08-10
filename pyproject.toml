@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "audio-sentence-splitter"
+version = "0.1.0"
+description = "Offline speech recognition and sentence-level audio splitter"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Audio Sentence Splitter contributors" }]
+dependencies = [
+    "faster-whisper>=1.1.0,<2",
+    "imageio-ffmpeg>=0.5.1,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+audio-sentence-split = "audio_sentence_splitter.cli:main"
+
+[project.gui-scripts]
+audio-sentence-split-gui = "audio_sentence_splitter.gui:main"
+
+[tool.setuptools.packages.find]
+include = ["audio_sentence_splitter*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
